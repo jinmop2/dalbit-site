@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>살롱 드 루나 — 달빛골목</title>
+<meta name="description" content="촛불 아래 루나가 1909년 라이더-웨이트 원본 78장으로 연애·일·돈·관계의 질문을 한 장씩 읽어 드립니다. 직접 섞고, 떼고, 고르는 진짜 리딩.">
+<meta name="theme-color" content="#140c30">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='4' width='36' height='56' rx='5' fill='%232c1a5c' stroke='%23e6c470' stroke-width='3'/%3E%3Cpath d='M38 20a12 12 0 1 0 0 24a9 9 0 1 1 0-24' fill='%23f6e2a6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Brush+Script&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css?v=09910a94">
+<link rel="stylesheet" href="assets/css/tarot.css?v=09910a94">
+</head>
+<body class="shop-tarot">
+<div class="shop">
+  <div class="stage-col">
+    <div class="stage">
+      <svg class="scene" viewBox="0 0 600 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="room" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#3b2a6e"/><stop offset=".6" stop-color="#1d1440"/><stop offset="1" stop-color="#0c0820"/></radialGradient>
+          <linearGradient id="curtain" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a1048"/><stop offset=".5" stop-color="#5a2a8a"/><stop offset="1" stop-color="#2a1048"/></linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cdb4ff" stop-opacity=".55"/><stop offset="1" stop-color="#cdb4ff" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="600" height="700" fill="url(#room)"/>
+        <!-- 별자리 벽지 -->
+        <g opacity=".35" fill="#f3d98b">
+          <circle cx="90" cy="120" r="2"/><circle cx="140" cy="90" r="1.5"/><circle cx="180" cy="140" r="2"/><circle cx="420" cy="80" r="2"/><circle cx="470" cy="130" r="1.6"/><circle cx="520" cy="96" r="2"/>
+          <path d="M90 120 L140 90 L180 140 M420 80 L470 130 L520 96" stroke="#f3d98b" stroke-width=".8" fill="none"/>
+        </g>
+        <!-- 커튼 -->
+        <path d="M0 0 H150 Q120 200 140 420 Q100 560 120 700 H0 Z" fill="url(#curtain)"/>
+        <path d="M600 0 H450 Q480 200 460 420 Q500 560 480 700 H600 Z" fill="url(#curtain)"/>
+        <path d="M40 0 Q30 300 50 700 M90 0 Q76 300 96 700 M560 0 Q570 300 550 700 M510 0 Q524 300 504 700" stroke="#1a0830" stroke-width="3" fill="none" opacity=".6"/>
+        <path d="M0 0 H600 V40 Q300 70 0 40 Z" fill="#3a1660"/><path d="M0 40 Q300 70 600 40" stroke="#d8b45a" stroke-width="3" fill="none"/>
+        <!-- 테이블 뒤 빛 -->
+        <ellipse cx="300" cy="520" rx="260" ry="120" fill="url(#glow)"/>
+      </svg>
+      <div class="actor" id="actor"></div>
+      <svg class="front" data-table-y="70" viewBox="0 0 600 200" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <defs>
+          <radialGradient id="ball" cx=".38" cy=".35" r=".7"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#cfe0ff"/><stop offset="1" stop-color="#6a4cc0"/></radialGradient>
+          <radialGradient id="ballglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#b9a0ff" stop-opacity=".7"/><stop offset="1" stop-color="#b9a0ff" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- 둥근 탁자와 식탁보 -->
+        <ellipse cx="300" cy="120" rx="300" ry="50" fill="#3a1d5e"/>
+        <path d="M0 120 Q300 175 600 120 L600 200 L0 200 Z" fill="#2a1048"/>
+        <path d="M0 120 Q300 175 600 120" stroke="#d8b45a" stroke-width="3" fill="none"/>
+        <!-- 수정구 -->
+        <ellipse cx="300" cy="72" rx="80" ry="80" fill="url(#ballglow)" class="ballglow"/>
+        <path d="M262 112 L338 112 L326 128 L274 128 Z" fill="#b08a3a"/>
+        <circle cx="300" cy="78" r="38" fill="url(#ball)" class="ball"/>
+        <ellipse cx="288" cy="62" rx="10" ry="6" fill="#fff" opacity=".7"/>
+        <!-- 촛불 -->
+        <g transform="translate(90 70)"><rect x="-7" y="0" width="14" height="48" rx="2" fill="#f2e8d4"/><path class="flame" d="M0 -20 C8 -10 6 -2 0 0 C-6 -2 -8 -10 0 -20 Z" fill="#ffcf5a"/><circle cx="0" cy="-8" r="16" fill="#ffcf5a" opacity=".15" class="halo"/></g>
+        <g transform="translate(130 86)"><rect x="-5" y="0" width="10" height="34" rx="2" fill="#f2e8d4"/><path class="flame f2" d="M0 -15 C6 -8 4 -2 0 0 C-4 -2 -6 -8 0 -15 Z" fill="#ffcf5a"/></g>
+        <g transform="translate(510 74)"><rect x="-7" y="0" width="14" height="44" rx="2" fill="#f2e8d4"/><path class="flame f3" d="M0 -20 C8 -10 6 -2 0 0 C-6 -2 -8 -10 0 -20 Z" fill="#ffcf5a"/><circle cx="0" cy="-8" r="16" fill="#ffcf5a" opacity=".15" class="halo"/></g>
+        <!-- 엎어 둔 덱 -->
+        <g transform="translate(420 92) rotate(-8)"><rect x="0" y="0" width="44" height="28" rx="3" fill="#2c1a5c" stroke="#e6c470" stroke-width="1.5"/><rect x="2" y="-3" width="44" height="28" rx="3" fill="#2c1a5c" stroke="#e6c470" stroke-width="1.5"/><path d="M28 4 a8 8 0 1 0 0 16 a6 6 0 1 1 0 -16" fill="#f6e2a6"/></g>
+      </svg>
+      <canvas id="sparkle" class="sparkle" aria-hidden="true"></canvas>
+    </div>
+    <div class="dialog" id="dialog" aria-live="polite">
+      <div class="nameplate">루나</div>
+      <div class="line"></div>
+      <div class="choices"></div>
+      <div class="next">▼</div>
+    </div>
+  </div>
+  <main class="content-col" id="content"></main>
+</div>
+<script src="assets/js/characters.js?v=09910a94"></script>
+<script src="assets/js/vendor/manseryeok.js?v=09910a94"></script>
+<script src="assets/js/saju-core.js?v=09910a94"></script>
+<script src="assets/js/common.js?v=09910a94"></script>
+<script src="assets/js/tarot-data.js?v=09910a94"></script>
+<script src="assets/js/tarot-deep.js?v=09910a94"></script>
+<script src="assets/js/tarot-art.js?v=09910a94"></script>
+<script src="assets/js/tarot-reading.js?v=09910a94"></script>
+<script src="assets/js/tarot-app.js?v=09910a94"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* 달빛골목 입구 */
+body.alley {
+  background: radial-gradient(ellipse at 70% -10%, #2b3170 0%, #141a40 40%, #0b0e22 75%) fixed, #0b0e22;
+  min-height: 100vh; overflow-x: hidden;
+}
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.moonbig {
+  position: fixed; top: 7vh; right: 9vw; width: clamp(90px, 14vw, 170px); aspect-ratio: 1; border-radius: 50%; z-index: 0;
+  background: radial-gradient(circle at 38% 36%, #fffbe6 0%, #f7e3a3 45%, #e3c26d 75%, #c9a04a 100%);
+  box-shadow: 0 0 60px 20px rgba(243, 217, 139, .25), 0 0 160px 60px rgba(243, 217, 139, .12);
+}
+.moonbig::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 62% 60%, rgba(160, 120, 40, .18) 0 10%, transparent 11%), radial-gradient(circle at 34% 64%, rgba(160, 120, 40, .14) 0 7%, transparent 8%), radial-gradient(circle at 58% 30%, rgba(160, 120, 40, .12) 0 5%, transparent 6%); }
+.roofs { position: fixed; left: 0; right: 0; bottom: 0; width: 100%; height: 26vh; z-index: 0; pointer-events: none; opacity: .9; }
+.wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 62px 16px 40px; }
+
+.hero { text-align: center; margin-bottom: 0; }
+.hero .kicker { color: var(--gold2); letter-spacing: .3em; font-size: 14px; margin: 0; }
+.hero h1 { font-family: var(--font-brush); font-weight: 400; font-size: clamp(54px, min(11vw, 12vh), 124px); line-height: 1; margin: 4px 0 4px; color: #fff7dc; text-shadow: 0 0 24px rgba(243, 217, 139, .45); }
+.hero .lead { color: var(--muted); margin: 0; }
+
+.shops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2.4vw, 30px); align-items: end; justify-items: center; margin: 56px 0 28px; }
+.shopfront { position: relative; display: block; text-decoration: none; color: var(--text); border-radius: 18px; outline: none; transition: transform .35s ease; }
+.shopfront:hover, .shopfront.open { transform: translateY(-6px); }
+.shopfront:focus-visible { box-shadow: 0 0 0 3px var(--gold2); }
+/* 노트북: 창 높이에 맞춰 세 가게가 한 화면에 들어오게 */
+.shopfront .facade { display: block; height: clamp(220px, calc(100vh - 350px), 470px); width: auto; max-width: 100%; filter: drop-shadow(0 18px 26px rgba(0, 0, 0, .5)); }
+.shopfront .door-l, .shopfront .door-r { transition: transform .7s cubic-bezier(.3, .7, .2, 1); }
+.shopfront.open .door-l { transform: translateX(-62px); }
+.shopfront.open .door-r { transform: translateX(62px); }
+.shop-unse.open .door-l { transform: translateX(-84px); }
+.shop-unse.open .door-r { transform: translateX(84px); }
+.shopfront.going .door-l { transform: translateX(-90px); }
+.shopfront.going .door-r { transform: translateX(90px); }
+.shopfront .plate { text-align: center; margin-top: 8px; display: grid; }
+.shopfront .plate { margin-top: 4px; }
+.shopfront .plate strong { font-size: 19px; color: #fff4d6; }
+.shopfront .plate span { font-size: 14px; color: var(--muted); }
+.shopfront .bubble {
+  position: absolute; left: 50%; top: -6px; transform: translate(-50%, -100%) scale(.9); opacity: 0; pointer-events: none;
+  width: max-content; max-width: 92%; background: #fff8e8; color: #2a2230; padding: 9px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .35); transition: opacity .3s, transform .3s; z-index: 2;
+}
+.shopfront .bubble::after { content: ''; position: absolute; left: 50%; bottom: -8px; margin-left: -8px; border: 8px solid transparent; border-top-color: #fff8e8; border-bottom: 0; }
+.shopfront.open .bubble { opacity: 1; transform: translate(-50%, -100%) scale(1); }
+.shopfront .bubble { font-size: 13px; max-width: min(250px, 96%); }
+.shop-dots, .swipe-hint { display: none; }
+
+/* 휴대폰: 세 가게를 옆으로 넘기는 카드 — 가운데 온 가게는 문이 열리며 인사 */
+@media (max-width: 860px) {
+  .wrap { padding-top: 58px; }
+  .hero .lead { font-size: 14px; }
+  .shops { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin: 50px -16px 6px; padding: 0 calc(50vw - min(36vw, 17vh) - 0px) 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .shops::-webkit-scrollbar { display: none; }
+  .shopfront { flex: 0 0 min(72vw, 34vh); scroll-snap-align: center; }
+  .shopfront:hover { transform: none; }
+  .shopfront .facade { width: 100%; height: auto; }
+  .shops { margin-top: 18px; }
+  .shopfront .bubble { top: 2px; transform: translate(-50%, 0) scale(.9); max-width: 92%; }
+  .shopfront.open .bubble { transform: translate(-50%, 0) scale(1); }
+  .shopfront .bubble::after { display: none; }
+  .moonbig { top: 52px; right: 4vw; width: 64px; }
+  .shopfront:not(.open) { opacity: .62; transform: scale(.94); }
+  .shop-dots { display: flex; justify-content: center; gap: 8px; margin: 6px 0 2px; }
+  .shop-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: rgba(255, 255, 255, .25); cursor: pointer; }
+  .shop-dots button.on { background: var(--gold2); width: 22px; border-radius: 999px; }
+  .swipe-hint { display: block; text-align: center; color: var(--muted); font-size: 12px; margin: 0 0 18px; }
+}
+.lantern { animation: swing 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 0; }
+@keyframes swing { 50% { transform: rotate(4deg); } }
+.facade .flame { animation: flick .18s infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+@keyframes flick { to { transform: scale(.88, 1.08) skewX(3deg); } }
+.facade .neon { animation: neon 4s infinite; }
+@keyframes neon { 0%, 92%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #f3d98b); } 94% { opacity: .5; } 96% { opacity: 1; } }
+.facade .foxfire { animation: foxfire 3s ease-in-out infinite; filter: drop-shadow(0 0 6px #7fc4ff); }
+@keyframes foxfire { 50% { transform: translateY(-10px); opacity: .5; } }
+
+.sec-title { font-family: var(--font-brush); font-weight: 400; font-size: 34px; color: #fff4d6; margin: 0 0 12px; }
+.today .today-date .big { font-size: 28px; font-weight: 700; }
+.today .today-date .big small { font-size: 16px; color: var(--muted); font-weight: 400; }
+.today .gold { color: var(--gold2); }
+.today #today { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: center; }
+@media (max-width: 700px) { .today #today { grid-template-columns: 1fr; } }
+.regular { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.about h3 { color: var(--gold2); font-size: 17px; }

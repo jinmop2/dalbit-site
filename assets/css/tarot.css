@@ -1,0 +1,189 @@
+/* 살롱 드 루나 */
+body.shop-tarot {
+  --accent: #e6c470; --accent-ink: #1b1240;
+  --panel: rgba(28, 18, 62, .82); --text: #efe8ff; --muted: #b6a9d6; --line: rgba(230, 210, 255, .16);
+  --gold2: #f6e2a6; --tabs-bg: #120b2c;
+  background: radial-gradient(ellipse at 70% 0%, #2e1d60 0%, #140c30 55%, #0a0618 100%) fixed, #0a0618;
+}
+.shop-tarot .stage-col { background: #0c0820; }
+.shop-tarot .dialog .nameplate { background: linear-gradient(90deg, #e6c470, #f6e2a6); }
+.shop-tarot .panel h2 { font-family: var(--font-latin), var(--font-body); color: var(--gold2); letter-spacing: .03em; }
+.sparkle { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.front .flame { animation: flick .16s infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+.front .f2 { animation-duration: .21s; } .front .f3 { animation-duration: .18s; }
+.front .halo { animation: halo 2.4s ease-in-out infinite; }
+@keyframes flick { to { transform: scale(.86, 1.1) skewX(4deg); } }
+@keyframes halo { 50% { opacity: .05; } }
+.front .ball { animation: ball 4s ease-in-out infinite; }
+.front .ballglow { animation: ballglow 4s ease-in-out infinite; }
+@keyframes ball { 50% { filter: brightness(1.25) hue-rotate(20deg); } }
+@keyframes ballglow { 50% { opacity: .5; } }
+.stage.charged .front .ballglow { animation-duration: .8s; }
+
+/* 메뉴 */
+.menu-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 560px) { .menu-grid { grid-template-columns: 1fr; } }
+.menu-card { text-align: left; padding: 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); cursor: pointer; }
+.menu-card:hover { background: rgba(255, 255, 255, .09); }
+.menu-card b { display: block; font-size: 17px; color: var(--gold2); }
+.menu-card span { font-size: 14px; color: var(--muted); }
+.topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.examples { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.examples button { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px dashed var(--line); background: none; color: var(--muted); cursor: pointer; }
+.spread-list { display: grid; gap: 10px; }
+.spread-opt { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); cursor: pointer; text-align: left; }
+.spread-opt:hover, .spread-opt.rec { border-color: var(--gold2); }
+.spread-opt .n { font-family: var(--font-latin); font-size: 24px; color: var(--gold2); min-width: 34px; text-align: center; }
+.spread-opt small { display: block; color: var(--muted); }
+.spread-opt em { font-style: normal; font-size: 12px; background: var(--gold2); color: #1b1240; border-radius: 999px; padding: 0 8px; margin-left: 6px; }
+
+/* 카드 */
+.tcard { position: relative; width: 100%; aspect-ratio: 3 / 5; perspective: 900px; }
+.tcard .inner { position: absolute; inset: 0; transition: transform .8s cubic-bezier(.3, .7, .2, 1); transform-style: preserve-3d; }
+.tcard .side { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; box-shadow: 0 6px 16px rgba(0, 0, 0, .45); }
+.tcard .side svg { width: 100%; height: 100%; display: block; }
+.tcard .front-side { transform: rotateY(180deg); }
+.tcard.rev .front-side svg { transform: rotate(180deg); }
+.tcard.flipped .inner { transform: rotateY(180deg); }
+.tcard.glow .side { box-shadow: 0 0 0 2px #f6e2a6, 0 0 24px 6px rgba(246, 226, 166, .45); }
+
+/* 섞기 */
+.deck-area { display: grid; place-items: center; min-height: 300px; position: relative; }
+.deck { position: relative; width: 140px; aspect-ratio: 3 / 5; }
+.deck .dc { position: absolute; inset: 0; transition: transform .35s ease; }
+.deck .dc svg { width: 100%; height: 100%; display: block; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, .4); }
+.deck.shuffling .dc:nth-child(odd) { animation: riffleL .5s ease-in-out; }
+.deck.shuffling .dc:nth-child(even) { animation: riffleR .5s ease-in-out; }
+@keyframes riffleL { 40% { transform: translate(-70px, -8px) rotate(-14deg); } }
+@keyframes riffleR { 40% { transform: translate(70px, -8px) rotate(14deg); } }
+.shuffle-meter { width: 220px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .1); overflow: hidden; margin: 14px auto 6px; }
+.shuffle-meter div { height: 100%; width: 0; background: linear-gradient(90deg, #b48cf0, #f6e2a6); transition: width .3s; }
+.hold-btn { touch-action: none; user-select: none; -webkit-user-select: none; }
+.hold-btn.holding { transform: scale(.96); filter: brightness(1.15); }
+.piles { display: flex; gap: clamp(14px, 4vw, 40px); justify-content: center; margin: 20px 0; }
+.pile { width: clamp(84px, 18vw, 120px); cursor: pointer; text-align: center; background: none; border: 0; padding: 0; color: var(--text); }
+.pile .stack { position: relative; aspect-ratio: 3 / 5; }
+.pile .stack svg { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 8px; box-shadow: 0 3px 8px rgba(0, 0, 0, .4); }
+.pile:hover .stack { transform: translateY(-6px); transition: transform .2s; }
+.pile span { display: block; margin-top: 8px; font-family: var(--font-latin); color: var(--gold2); }
+
+/* 펼친 카드 고르기 */
+.fan { display: flex; flex-wrap: wrap; justify-content: center; padding: 10px 10px 20px 30px; }
+.fan .fc { width: clamp(38px, 5.6vw, 58px); margin-left: calc(clamp(38px, 5.6vw, 58px) * -0.45); margin-top: 10px; cursor: pointer; transition: transform .2s, opacity .3s; border: 0; padding: 0; background: none; }
+.fan .fc svg { width: 100%; height: auto; display: block; border-radius: 5px; box-shadow: -2px 2px 6px rgba(0, 0, 0, .5); }
+.fan .fc:hover, .fan .fc:focus-visible { transform: translateY(-12px); outline: none; }
+.fan .fc.taken { opacity: 0; pointer-events: none; transform: translateY(-30px); }
+.pick-count { text-align: center; font-family: var(--font-latin); font-size: 18px; color: var(--gold2); }
+
+/* 배열 */
+.spread { display: grid; gap: 14px; justify-content: center; margin: 10px auto 6px; }
+.spread .slot { width: clamp(72px, 12vw, 116px); text-align: center; }
+.spread .slot .plabel { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.3; min-height: 2.6em; }
+.spread .slot .tcard { cursor: pointer; }
+.spread .slot .empty { aspect-ratio: 3 / 5; border: 1px dashed var(--line); border-radius: 8px; }
+.spread.s-one { grid-template-columns: auto; }
+.spread.s-three { grid-template-columns: repeat(3, auto); }
+.spread.s-love { grid-template-areas: ". e ." "a c b" ". d ."; }
+.spread.s-love .slot:nth-child(1) { grid-area: a; } .spread.s-love .slot:nth-child(2) { grid-area: b; } .spread.s-love .slot:nth-child(3) { grid-area: c; } .spread.s-love .slot:nth-child(4) { grid-area: d; } .spread.s-love .slot:nth-child(5) { grid-area: e; }
+.spread.s-choice { grid-template-areas: "c . e" "b . d" ". a ."; }
+.spread.s-choice .slot:nth-child(1) { grid-area: a; } .spread.s-choice .slot:nth-child(2) { grid-area: b; } .spread.s-choice .slot:nth-child(3) { grid-area: c; } .spread.s-choice .slot:nth-child(4) { grid-area: d; } .spread.s-choice .slot:nth-child(5) { grid-area: e; }
+.spread.s-celtic { grid-template-areas: ". e . j" "d x f i" ". c . h" ". . . g"; }
+.spread.s-celtic .slot:nth-child(1) { grid-area: x; position: relative; z-index: 1; }
+.spread.s-celtic .slot:nth-child(2) { grid-area: x; z-index: 2; transform: rotate(90deg) translateX(0); }
+.spread.s-celtic .slot:nth-child(2) .plabel { transform: rotate(-90deg); opacity: 0; }
+.spread.s-celtic .slot:nth-child(3) { grid-area: e; } .spread.s-celtic .slot:nth-child(4) { grid-area: c; } .spread.s-celtic .slot:nth-child(5) { grid-area: d; } .spread.s-celtic .slot:nth-child(6) { grid-area: f; }
+.spread.s-celtic .slot:nth-child(7) { grid-area: g; } .spread.s-celtic .slot:nth-child(8) { grid-area: h; } .spread.s-celtic .slot:nth-child(9) { grid-area: i; } .spread.s-celtic .slot:nth-child(10) { grid-area: j; }
+.spread.s-celtic .slot { width: clamp(56px, 9vw, 92px); }
+.spread.s-celtic .slot:nth-child(2) .tcard { transform: none; }
+
+/* 풀이 */
+.card-read { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 520px) { .card-read { grid-template-columns: 84px 1fr; gap: 12px; } }
+.card-read .pos { font-size: 13px; color: var(--muted); }
+.card-read h3 { margin: 2px 0 4px; font-size: 19px; color: var(--gold2); }
+.card-read h3 small { font-size: 13px; color: var(--muted); font-weight: 400; }
+.orient { display: inline-block; font-size: 12px; padding: 0 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle; line-height: 1.7; font-family: var(--font-body); font-weight: 400; }
+.orient.up { background: #f6e2a6; color: #1b1240; } .orient.rev { background: #6a4cc0; color: #fff; }
+.card-read .kw { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.card-read .img { font-size: 13px; color: var(--muted); font-style: italic; border-left: 2px solid var(--line); padding-left: 8px; margin: 8px 0; }
+.card-read p { margin: 4px 0; }
+.luna-says { background: rgba(230, 196, 112, .08); border: 1px solid rgba(230, 196, 112, .25); border-radius: 12px; padding: 12px 14px; margin: 14px 0; }
+.luna-says b { color: var(--gold2); }
+.stat-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.stat { padding: 6px 12px; border-radius: 10px; background: rgba(255, 255, 255, .05); border: 1px solid var(--line); font-size: 14px; }
+.yesno { font-family: var(--font-latin); font-size: 30px; text-align: center; color: var(--gold2); margin: 6px 0; }
+.history li { margin-bottom: 6px; }
+.big-card { width: min(220px, 60vw); margin: 10px auto; }
+
+/* ── 원본 카드 그림 ── */
+.rws { width: 100%; height: 100%; border-radius: 8px; overflow: hidden; background: #f3ead6; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15); }
+.rws img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+.tcard.rev .front-side .rws img { transform: rotate(180deg); }
+.tcard .side svg { width: 100%; height: 100%; display: block; }
+
+/* ── 한 장씩 읽기 ── */
+.step-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.pos-no { font-family: var(--font-latin); color: var(--gold2); font-size: 18px; }
+.dots { display: flex; gap: 6px; flex-wrap: wrap; }
+.dot { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); color: var(--muted); font-size: 12px; cursor: pointer; }
+.dot.seen { background: rgba(230, 196, 112, .2); color: var(--text); }
+.dot.on { background: var(--gold2); color: #1b1240; font-weight: 700; }
+.step-grid { display: grid; grid-template-columns: minmax(130px, 220px) 1fr; gap: 20px; align-items: start; }
+@media (max-width: 560px) { .step-grid { grid-template-columns: 1fr; } .step-card { width: min(200px, 60vw); margin: 0 auto; } }
+.step-card .tcard { cursor: default; }
+.reading-step .pos { font-size: 13px; color: var(--muted); }
+.reading-step h3 { margin: 2px 0 4px; font-size: 22px; color: var(--gold2); }
+.reading-step h3 small { font-size: 13px; color: var(--muted); font-weight: 400; font-family: var(--font-latin); }
+.reading-step .kw { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.read-lines p { margin: 6px 0; }
+.read-lines .lead-line { font-size: 18px; line-height: 1.7; }
+.read-lines .lead-line b, .card-read b { color: var(--gold2); }
+.advice-line { background: rgba(230, 196, 112, .1); border-left: 3px solid var(--gold2); padding: 6px 12px; border-radius: 0 8px 8px 0; }
+details.look { margin-top: 10px; font-size: 14px; color: var(--muted); }
+details.look summary { cursor: pointer; color: var(--gold2); }
+.ask-box { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: rgba(180, 140, 240, .1); border: 1px solid rgba(180, 140, 240, .3); }
+.ask-box .q { margin: 0; font-size: 16px; }
+.reply { margin: 6px 0 0; color: var(--gold2); font-size: 15px; min-height: 1em; }
+.step-nav { justify-content: flex-end; margin-top: 14px; }
+
+/* ── 종합 리딩 ── */
+.thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 10px; }
+.thumb { flex: none; width: 72px; background: none; border: 0; padding: 0; cursor: pointer; color: var(--muted); text-align: center; }
+.thumb .tw { width: 72px; }
+.thumb small { display: block; font-size: 11px; line-height: 1.3; margin-top: 4px; }
+.luna-says.story p { font-size: 17px; line-height: 1.8; }
+.luna-says.story b { color: var(--gold2); }
+.gauge-box { margin: 14px 0; }
+.gauge-box h4, .combos h4, .patterns h4 { margin: 0 0 8px; color: var(--gold2); font-size: 16px; }
+.thermo { position: relative; height: 18px; border-radius: 999px; background: linear-gradient(90deg, #5b8bd9, #b48cf0 50%, #ff6b8b); overflow: hidden; }
+.thermo .tfill { position: absolute; inset: 0 auto 0 0; background: transparent; border-right: 3px solid #fff; box-shadow: 4px 0 10px rgba(255, 255, 255, .6); }
+.thermo span { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 12px; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+.vmeter { height: 12px; border-radius: 999px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.vmeter .vfill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #6a4cc0, #f6e2a6); }
+.combo { padding: 8px 12px; border-radius: 10px; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); margin-bottom: 8px; }
+.combo span { font-size: 12px; color: var(--muted); display: block; }
+.combo b { color: var(--gold2); }
+.combo p { margin: 2px 0 0; font-size: 15px; }
+.patterns p { margin: 4px 0; }
+.timing { background: rgba(255, 255, 255, .04); border-radius: 10px; padding: 8px 12px; }
+.final-btns { justify-content: center; margin: 12px 0; }
+details.all-cards { margin-top: 10px; }
+details.all-cards summary { cursor: pointer; color: var(--gold2); }
+
+/* ── 카드 도감 ── */
+.lib-tabs { position: static; background: none; }
+.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px; margin-top: 8px; }
+.lib-card { background: none; border: 0; padding: 0; cursor: pointer; color: var(--muted); text-align: center; }
+.lib-card img { width: 100%; aspect-ratio: 3 / 5; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 10px rgba(0, 0, 0, .4); transition: transform .2s; display: block; }
+.lib-card:hover img { transform: translateY(-4px); }
+.lib-card small { display: block; font-size: 12px; margin-top: 4px; }
+.lib-detail { display: grid; grid-template-columns: minmax(120px, 200px) 1fr; gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+@media (max-width: 560px) { .lib-detail { grid-template-columns: 1fr; } .ld-img { width: min(180px, 50vw); margin: 0 auto; } }
+.ld-img img { width: 100%; border-radius: 8px; box-shadow: 0 8px 20px rgba(0, 0, 0, .45); display: block; }
+.lib-detail h3 { color: var(--gold2); margin: 0 0 4px; }
+.lib-detail .mini h4 { margin: 0 0 6px; font-size: 15px; }
+.mini { background: rgba(255, 255, 255, .04); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.mini p { margin: 4px 0; }
+
+.lib-detail .grid2 { grid-template-columns: 1fr; }
+@media (min-width: 1200px) { .lib-detail .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

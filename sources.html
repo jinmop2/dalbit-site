@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>참고 자료 — 달빛골목</title>
+<meta name="description" content="달빛골목의 사주·타로·운세가 참고한 고전, 논문, 데이터, 앱과 계산 기준.">
+<meta name="theme-color" content="#0b0e22">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Brush+Script&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css?v=09910a94">
+<style>
+  body { background: radial-gradient(ellipse at 70% -10%, #2b3170 0%, #141a40 40%, #0b0e22 75%) fixed, #0b0e22; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 84px 16px 60px; }
+  h1 { font-family: var(--font-brush); font-weight: 400; font-size: 56px; margin: 0 0 4px; color: #fff4d6; }
+  .panel h2 { font-family: var(--font-brush); font-weight: 400; font-size: 32px; color: #fff4d6; }
+  .panel ul { padding-left: 20px; margin: 6px 0; }
+  .panel li { margin-bottom: 8px; }
+  .panel li small { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--gold2); font-weight: 700; white-space: nowrap; }
+  code { font-size: 13px; background: rgba(255, 255, 255, .08); padding: 1px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>참고 자료와 계산 기준</h1>
+  <p class="muted">달빛골목의 세 가게가 무엇을 근거로 계산하고 풀이하는지 밝혀 둡니다. 풀이 문장은 아래 자료들의 통설을 바탕으로 이곳에서 새로 쓴 것이며, 원문을 옮겨 오지 않았습니다(『적천수』 원문처럼 저작권이 끝난 고전 구절만 짧게 인용).</p>
+
+  <section class="panel">
+    <h2>청운 철학관 — 사주 계산</h2>
+    <table>
+      <tr><th>네 기둥</th><td>연주는 입춘 절입 순간, 월주는 12절(節) 경계로 세웁니다. 절입 시각은 한국천문연구원(KASI)과 분 단위로 맞춘 절입표(1800~2300)를 쓰는 오픈소스 만세력 <a href="https://github.com/yhj1024/manseryeok">manseryeok 2.0</a>(MIT)을 사용했어요.</td></tr>
+      <tr><th>교차 검증</th><td>무작위 4,000개 생년월일시로 중국 6tail <a href="https://github.com/6tail/lunar-javascript">lunar-javascript</a>(한국 시각으로 환산)와 네 기둥이 모두 일치했고, 음력 변환은 KASI 자료 기반 korean-lunar-calendar와 모두 일치했어요.</td></tr>
+      <tr><th>진태양시</th><td>(출생지 경도 − 135°) × 4분 + 균시차, 그리고 IANA 시간대 자료(Asia/Seoul)의 옛 표준시(1908~11·1954~61년 UTC+8:30)와 서머타임(1948~51·1955~60·1987~88년)을 반영해요. 서울은 약 −32분이에요. 연·월주는 절입의 절대 시각으로 판정하므로 경도와 무관합니다. <small>(<a href="https://en.wikipedia.org/wiki/Time_in_South_Korea">Time in South Korea</a>)</small></td></tr>
+      <tr><th>자시 관법</th><td>기본은 자정에 날이 바뀌는 방식(야자시·조자시 구분)이고, 23시에 날을 바꾸는 정자시와 '날은 그대로·시주만 다음날' 방식을 고를 수 있어요. 학계에서도 의견이 갈리는 부분이에요.</td></tr>
+      <tr><th>대운</th><td>양년 남자·음년 여자는 순행, 반대는 역행. 출생부터 인접 절입까지의 날수를 3으로 나눠 대운수를 정하고(3일=1년, 1일=4개월), 시작 연월까지 표시해요.</td></tr>
+      <tr><th>지장간</th><td>여기·중기·정기와 일수(예: 寅 = 戊7·丙7·甲16). 지지의 십성은 정기 기준.</td></tr>
+      <tr><th>12운성·12신살</th><td>12운성은 일간 기준 봉법(양간 순행, 음간 역행). 12신살은 년지 삼합의 생지를 지살로 놓고 셉니다.</td></tr>
+      <tr><th>신살</th><td>천을귀인(甲戊庚→丑未, 乙己→子申, 丙丁→亥酉, 辛→寅午, 壬癸→卯巳), 문창귀인, 학당귀인(일간의 장생지), 금여록(건록의 두 칸 앞), 암록(건록과 육합하는 지지), 천의성(월지 바로 앞 지지), 고신·과숙(년지 계절 기준), 현침살(甲·辛·卯·午·申 두 개 이상), 홍염(甲午·乙申·丙寅·丁未·戊辰·己辰·庚戌·辛酉·壬子·癸申), 양인(양간), 도화·역마·화개(년지·일지 삼합 기준), 괴강(庚辰·庚戌·壬辰·壬戌·戊戌), 백호(甲辰·乙未·丙戌·丁丑·戊辰·壬戌·癸丑), 원진·귀문관, 월덕·천덕귀인, 공망. 표는 학파마다 조금씩 달라요.</td></tr>
+      <tr><th>신강·신약</th><td>일간을 돕는 기운(비겁·인성)의 비율을 지장간 일수와 자리 무게(월지 2.5, 일지 1.4, 시지 1.0, 년지 0.9 …)로 계산하고, 무작위 3,000개 사주의 분포로 극신약·신약·중화·신강·극신강 5단계 경계를 정했어요.</td></tr>
+      <tr><th>용신</th><td>억부(抑扶) · 조후(調候) · 통관(通關)을 함께 저울질해요. 조후는 『궁통보감』의 일간별·월별 조후용신표(120칸)를 그대로 쓰고, 한겨울에 불이 없거나 한여름에 물이 없으면 조후를 더 무겁게 봐요(조후위급). 일간의 뿌리가 거의 없고 한 기운이 사주를 덮으면 종아·종재·종살격, 나를 돕는 기운이 가득하면 종왕·종강격으로 봐요. 희신·기신·구신·한신은 오행 상생상극으로 정합니다. <small>(<a href="https://zh.wikisource.org/wiki/%E7%A9%B7%E9%80%9A%E5%AE%9D%E9%89%B4">『궁통보감』 위키문헌 원문</a> · <a href="https://www.suanzhun.net/article/1354.html">조후용신표 정리본</a>과 대조, 정리본의 辛日 子월 '申'은 '甲'의 오기로 보고 바로잡음)</small></td></tr>
+      <tr><th>통근·합</th><td>일간과 같은 오행이 지장간에 있으면 뿌리(정기는 강한 뿌리, 여기·중기는 가는 뿌리, 월지는 더 무겁게)로 보고, 세 지지가 모인 삼합·방합과 왕지가 낀 반합은 그 오행의 세력을 키워 신강약에 반영해요.</td></tr>
+      <tr><th>물상·일주론</th><td>천간을 자연물(甲 큰 나무, 丙 태양, 壬 큰 강…)로 보고 태어난 계절 위에 사주를 한 폭의 그림으로 읽어요. 강휘상영(丙壬)·도세주옥(辛壬)·벽갑인정(丁甲庚)·목화통명·금백수청 같은 고전의 물상 조합을 찾아 짚고, 60갑자 일주마다 일지의 십성·12운성·간여지동·괴강·백호·일귀를 바탕으로 쓴 일주론을 붙여요.</td></tr>
+      <tr><th>해마다의 사건</th><td>앞으로 10년의 세운에서 배우자 별(남 재성·여 관성)이나 일지와의 합·도화가 오는 해는 인연, 재성은 재물, 관성·인성은 자리·시험, 일지·월지와의 충이나 역마는 이동·변화로 짚어요. '지난 해 맞히기'는 지난 12년 중 일지·월지가 충을 맞은 해, 대운이 바뀐 해를 골라 물어봐요.</td></tr>
+      <tr><th>격국</th><td>월지 지장간 중 천간에 드러난(투출) 비겁 아닌 기운을 먼저, 없으면 정기로 정해요. 비견은 건록격, 겁재는 양인격(양간)·월겁격(음간).</td></tr>
+      <tr><th>궁합</th><td>일간의 천간합·상생상극, 일지의 육합·삼합·충·형·원진·해, 띠의 합충, 서로의 용신 보완, 배우자 별(남: 재성, 여: 관성)을 더하고 빼는 전통 궁합법을 점수화했어요.</td></tr>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>구슬이네 운세방 — 계산</h2>
+    <table>
+      <tr><th>오늘의 운세</th><td>그날의 일진(일주 간지)이 내 일간에 대해 갖는 십성(천간·지지), 일간의 12운성, 원국 네 지지와의 합·충·형·원진·해·파, 용신·기신과의 관계로 점수와 풀이를 정해요. 같은 날 같은 사주는 언제 봐도 같은 결과예요.</td></tr>
+      <tr><th>띠 운세</th><td>그해 지지와 띠 지지의 관계(본명·삼합·육합·충·형·원진·해·파)와 삼재(申子辰생→寅卯辰년, 巳酉丑생→亥子丑년, 寅午戌생→申酉戌년, 亥卯未생→巳午未년; 들·눌·날삼재). 띠는 입춘 기준이에요.</td></tr>
+      <tr><th>별자리</th><td>태양 별자리는 생일의 실제 태양 황경으로 정하고(경계일 출생도 정확), 그날 정오의 달이 지나는 별자리가 내 별자리로부터 몇 번째 집(솔라 하우스)인지와 달의 위상으로 풀어요. 달의 황경은 Jean Meeus 『Astronomical Algorithms』 47장 주기항으로 계산했고 ELP 이론값과 최대 0.003° 차이예요. 수성 역행 기간은 VSOP87 행성 이론으로 미리 계산했어요.</td></tr>
+      <tr><th>꿈해몽</th><td>한국 전통 해몽에서 널리 쓰이는 상징 풀이(재물몽·태몽·길몽·역몽)와 현대 심리학의 해석(불안·스트레스의 반영)을 함께 적었어요.</td></tr>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>살롱 드 루나 — 타로</h2>
+    <ul>
+      <li>A. E. Waite, 『The Pictorial Key to the Tarot』(1910) — 메이저·마이너 78장의 정·역방향 점술 의미와 켈틱 크로스 배열의 원전. <small>저작권 만료, <a href="https://sacred-texts.com/tarot/pkt/pktintr.htm">sacred-texts 전문</a> · <a href="https://en.wikipedia.org/wiki/The_Pictorial_Key_to_the_Tarot">위키백과</a></small></li>
+      <li>골든 던(Hermetic Order of the Golden Dawn)의 원소·점성 대응 — 메이저 카드의 행성·별자리, 수트의 4원소.</li>
+      <li>Rachel Pollack, 『Seventy-Eight Degrees of Wisdom』 · Mary K. Greer, 『Tarot for Your Self』 — 현대 타로 리딩의 해석 관행(열린 질문, 수트·메이저 비율 읽기, 숫자 반복 읽기).</li>
+      <li>카드 그림은 1909년 라이더-웨이트-스미스 덱 원본(그림 Pamela Colman Smith, 1878~1951)이에요. 미국에선 1927년 이전 출판물이라, 저작자 사후 70년 기준 나라에선 2022년부터 퍼블릭 도메인이에요. <a href="https://commons.wikimedia.org/wiki/Category:Rider-Waite_tarot_deck">위키미디어 공용</a>의 퍼블릭 도메인 스캔본을 줄여서 썼어요.</li>
+      <li>리딩은 카드마다 정·역방향의 본질·마음 상태·조언·결과·되묻는 질문을 따로 두고, 자리(과거·상대의 마음·장애물·결과 등)에 맞는 조각으로 문장을 엮어요. 카드 조합 37가지, 골든 던의 원소 상성(불↔공기, 물↔흙은 서로 돕고 불↔물, 공기↔흙은 부딪힘), 숫자·수트 비율, 메이저 카드의 별자리 시기를 함께 읽어요.</li>
+      <li>섞기는 브라우저의 암호학적 난수(<code>crypto.getRandomValues</code>)로 손으로 뭉치를 떼어 쌓고 가끔 돌려 놓는 방식을 흉내 냈어요. 역방향은 그렇게 돌아간 뭉치에서 생깁니다.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>명리 고전과 해설서</h2>
+    <ul>
+      <li>『연해자평(淵海子平)』 — 일간 중심 자평명리의 기본서. 십성·격국·신살 체계.</li>
+      <li>『적천수(滴天髓)』와 임철초의 『적천수천미(滴天髓闡微)』 — 천간론(甲木參天…) 인용과 일간 성정론.</li>
+      <li>심효첨, 『자평진전(子平眞詮)』 — 월령 중심의 격국론.</li>
+      <li>『궁통보감(窮通寶鑑, 난강망)』 — 계절별 조후 용신.</li>
+      <li>만민영, 『삼명통회(三命通會)』 — 신살과 대운 계산의 고전적 정리.</li>
+      <li>강헌, 『명리: 운명을 읽다』 — 명리를 운명 예언이 아닌 자기 이해의 도구로 보는 현대적 관점. <small>(<a href="https://www.gqkorea.co.kr/?p=353186">GQ 인터뷰</a>, <a href="https://www.nocutnews.co.kr/news/4714010">노컷뉴스</a>)</small></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>논문</h2>
+    <ul>
+      <li>주미강(2019), 명리학의 직업적성론, 『동방학』 40집, 한서대 동양고전연구소, 209~236쪽 — 오상(五常)과 육신으로 직업 적성을 보는 고법 명리의 관점. 직업·적성 풀이에 참고.</li>
+      <li>『적천수천미』의 성정론과 육신별 용신으로 성격 사례를 분류한 연구 <small>(<a href="https://m.earticle.net/Article/A188041">earticle</a>)</small></li>
+      <li>십성 개념과 에니어그램 성격 심리를 비교한 연구 <small>(<a href="https://www.kais99.org/jkais/journal/Vol19No10/vol19no10p09.pdf">한국산학기술학회논문지</a>)</small></li>
+      <li>출생지 경도에 따른 시주 보정과 자시(야자시·조자시·정자시) 문제를 다룬 연구 <small>(<a href="https://koreascience.or.kr/article/JAKO202317262225360.pdf">KoreaScience</a>)</small></li>
+      <li>황금옥(2017), 「한국 명리학(命理學)의 메타분석학적 고찰」, 『한국학』 40권 1호, 73~104쪽 — 명리학을 이론 체계와 술수(민속 문화) 두 갈래로 정리한 연구 동향 분석. <small>(<a href="https://www.accesson.kr/ksq/v.40/1/73/41013">AccessOn</a>, doi:10.25024/ksq.40.1.201703.73)</small></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>앱·사이트·유튜브 (진행 방식과 말투 참고)</h2>
+    <ul>
+      <li>포스텔러, 점신, 사주의신 — 만세력 화면 구성(원국 표·지장간·12운성·대운 카드), 오늘의 운세 점수·행운 아이템, 신년운세 구성. <small>(<a href="https://apps.apple.com/KR/app/id1262949138">포스텔러</a> · <a href="https://apps.apple.com/kr/app/%EC%82%AC%EC%A3%BC%EC%9D%98%EC%8B%A0-%EC%9A%B4%EC%84%B8-%EC%82%AC%EC%A3%BC-%ED%83%80%EB%A1%9C-%EB%AA%85%EB%A6%AC%ED%95%99%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83/id6450769581">사주의신</a>)</small></li>
+      <li>devcomma 만세력·신살 계산기 — 홍염살 표 대조. <small>(<a href="https://tools.devcomma.com/calculators/hongyeom-sal">홍염살 계산기</a>)</small></li>
+      <li>타로 유튜브 ‘호랑타로’·‘타로묘묘’ — “세 묶음 중 고르기(픽 어 카드)” 진행 방식. <small>(<a href="https://view.asiae.co.kr/article/2024021615163977330">아시아경제, 2024</a>)</small></li>
+      <li>사주 유튜브 ‘윤이세의 사주특별수사대’·‘널 위한 사주명리’ — 생활 명리 풀이의 쉬운 말투. <small>(<a href="https://vling.net/channel/UCm82TkcVIUDKgP1kDYMwC6A/channel-info">채널 정보</a>)</small></li>
+      <li>삼재 띠 정리 — <a href="https://k-calc.com/fortune/zodiac/pig/2026">k-calc</a> 등 2026 병오년 삼재(돼지·토끼·양띠 눌삼재) 자료와 대조.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>데이터와 오픈소스</h2>
+    <ul>
+      <li>한국천문연구원 음양력 정보 <small>(<a href="https://www.data.go.kr/data/15012679/openapi.do">공공데이터포털</a>)</small> — manseryeok 의 음력 정본.</li>
+      <li>manseryeok 2.0.0 — MIT © Yoohyojun (<code>assets/js/vendor/manseryeok.LICENSE</code>)</li>
+      <li>IANA tz database (Asia/Seoul) — 과거 표준시·서머타임</li>
+      <li>Jean Meeus, 『Astronomical Algorithms』 — 해·달의 황경, 균시차</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>꼭 읽어 주세요</h2>
+    <p>사주·타로·운세는 오랜 세월 사람들이 삶을 돌아보는 데 써 온 해석의 체계예요. 과학적으로 미래를 예측하는 도구는 아니에요. 이곳의 풀이는 재미와 자기 성찰을 위한 이야기로 즐겨 주세요. 건강·법률·투자·진로처럼 중요한 결정은 꼭 해당 분야의 전문가와 상의하세요.</p>
+    <p>입력한 생년월일과 리딩 기록은 서버로 보내지 않고 이 기기의 브라우저에만 저장돼요. 골목 입구의 ‘정보 지우기’로 언제든 지울 수 있어요.</p>
+  </section>
+  <p class="foot-note"><a href="index.html">← 달빛골목 입구로</a></p>
+</main>
+<script src="assets/js/common.js?v=09910a94"></script>
+<script>Dalbit.topbar();</script>
+</body>
+</html>
